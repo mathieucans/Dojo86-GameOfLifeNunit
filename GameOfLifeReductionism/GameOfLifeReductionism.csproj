@@ -40,7 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CellStateSolver.cs" />
     <Compile Include="GameOfLife.cs" />
+    <Compile Include="ICellStateSolver.cs" />
+    <Compile Include="INeighboursCount.cs" />
+    <Compile Include="NeighboursCount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

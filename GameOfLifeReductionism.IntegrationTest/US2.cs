@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using GameOfLifeReductionism;
 
 namespace GameOfLifeReductionism.IntegrationTest
 {
     [TestFixture]
-    class US1_AnyLiveCellWithFewerThanTwoLiveNeighboursDies
+    public class US2
     {
         private GameOfLife Create(string[] init)
         {
@@ -20,9 +19,9 @@ namespace GameOfLifeReductionism.IntegrationTest
         public void Exemple1()
         {
             var init = new string[] {
-                "----",
+                "X-X-",
                 "-X--",
-                "----",
+                "X-X-",
                 "----",
             };
             var game = Create(init);
@@ -35,27 +34,5 @@ namespace GameOfLifeReductionism.IntegrationTest
             };
             CollectionAssert.AreEqual(expected, game.Next());
         }
-
-        [TestCase]
-        public void Exemple2()
-        {
-            var init = new string[] {
-                "----",
-                "-X--",
-                "--X-",
-                "----",
-            };
-            var game = Create(init);
-
-            var expected = new string[] {
-                "----",
-                "----",
-                "----",
-                "----",
-            };
-            CollectionAssert.AreEqual(expected, game.Next());
-        }
-
-       
     }
 }

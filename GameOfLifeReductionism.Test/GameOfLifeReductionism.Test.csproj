@@ -50,8 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CellStateSolverTest.cs" />
     <Compile Include="GameOfLifeTest.cs" />
+    <Compile Include="NeighboursCountTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameOfLifeReductionism\GameOfLifeReductionism.csproj">
+      <Project>{472C1AC5-8CFD-496A-979B-883C3AFD5AA3}</Project>
+      <Name>GameOfLifeReductionism</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
