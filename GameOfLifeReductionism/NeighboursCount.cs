@@ -14,7 +14,7 @@ namespace GameOfLifeReductionism
             {
                 var distanceX = Math.Abs(cell.X - x);
                 var distanceY = Math.Abs(cell.Y - y);
-                if (distanceX == 1 | distanceY == 1)
+                if (distanceX <= 1 && distanceY <=1 && (distanceX == 1 | distanceY == 1))
                 {
                     count++;
                 }
