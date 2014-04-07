@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using GameOfLifeReductionism;
 
 namespace GameOfLifeReductionism.IntegrationTest
 {
@@ -11,7 +12,7 @@ namespace GameOfLifeReductionism.IntegrationTest
     {
         private GameOfLife Create(string[] init)
         {
-            var game = new GameOfLife(init, new NeighboursCount(), new CellStateSolver());
+            var game = new GameOfLife(init, new NeighboursCount(), new CellStateSolver(), new PanelConverter());
             return game;
         }
 

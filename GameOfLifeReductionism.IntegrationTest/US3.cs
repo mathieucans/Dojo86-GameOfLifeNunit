@@ -7,11 +7,12 @@ using NUnit.Framework;
 namespace GameOfLifeReductionism.IntegrationTest
 {
     [TestFixture]
+    [Ignore]
     public class US3
     {
         private GameOfLife Create(string[] init)
         {
-            var game = new GameOfLife(init, new NeighboursCount(), new CellStateSolver());
+            var game = new GameOfLife(init, new NeighboursCount(), new CellStateSolver(), new PanelConverter());
             return game;
         }
 

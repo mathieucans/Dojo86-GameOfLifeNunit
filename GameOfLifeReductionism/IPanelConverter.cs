@@ -5,8 +5,8 @@ using System.Text;
 
 namespace GameOfLifeReductionism
 {
-    public interface INeighboursCount
+    public interface IPanelConverter
     {
-        int GetCount(List<Cell> p, int p_2, int p_3);
+        List<Cell> Convert(string[] panel);
     }
 }

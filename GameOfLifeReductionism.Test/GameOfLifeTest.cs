@@ -14,19 +14,8 @@ namespace GameOfLifeReductionism.Test
         private INeighboursCount neighboursCount;
         private ICellStateSolver cellStateSolver;
         private string[] panel;
-        [TestCase]
-        public void Test1()
-        {          
-
-            
-
-            var game = Create();
-
-            game.Next();
-
-            A.CallTo(() => neighboursCount.GetCount(panel, A<int>.Ignored, A<int>.Ignored))
-                .MustHaveHappened(Repeated.Exactly.Times(16));
-        }
+        private IPanelConverter panelConverter;
+      
 
         [SetUp]
         public void Setup()
@@ -39,19 +28,35 @@ namespace GameOfLifeReductionism.Test
             };
             neighboursCount = A.Fake<INeighboursCount>();
             cellStateSolver = A.Fake<ICellStateSolver>();
+            panelConverter = A.Fake<IPanelConverter>();
         }
 
         private GameOfLife Create()
         {
-            var game = new GameOfLife(panel, neighboursCount, cellStateSolver);
+            var game = new GameOfLife(panel, neighboursCount, cellStateSolver, panelConverter);
             return game;
         }
 
         [TestCase]
-        public void Test2()
+        public void NeighboursCountIsCalledFoEachCell()
         {
             var game = Create();
-            A.CallTo(() => neighboursCount.GetCount(panel, A<int>.Ignored, A<int>.Ignored)).Returns(125);
+            var fakeList = new List<Cell>();
+            A.CallTo(() => panelConverter.Convert(panel)).Returns(fakeList);
+
+            game.Next();
+
+            A.CallTo(() => neighboursCount.GetCount(fakeList, A<int>.Ignored, A<int>.Ignored))
+                .MustHaveHappened(Repeated.Exactly.Times(16));
+        }
+
+        [TestCase]
+        public void Next_WhenNeigbOursCountIs125ForAllCell_CountIsWellPassedToSolver()
+        {
+            var game = Create();
+            var fakeList = new List<Cell>();
+            A.CallTo(() => panelConverter.Convert(panel)).Returns(fakeList);
+            A.CallTo(() => neighboursCount.GetCount(fakeList, A<int>.Ignored, A<int>.Ignored)).Returns(125);
             
             game.Next();
 
@@ -61,7 +66,7 @@ namespace GameOfLifeReductionism.Test
         }
 
         [TestCase]
-        public void Test3()
+        public void AllNewStatesAreUsedInTheFinalState()
         {
             A.CallTo(() => cellStateSolver.GetNextState(A<int>.Ignored)).ReturnsNextFromSequence(
                 new []{'1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G'});

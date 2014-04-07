@@ -7,6 +7,6 @@ namespace GameOfLifeReductionism
 {
     public interface ICellStateSolver
     {
-        char GetNextState(int p);
+        char GetNextState(int neigbourscount);
     }
 }

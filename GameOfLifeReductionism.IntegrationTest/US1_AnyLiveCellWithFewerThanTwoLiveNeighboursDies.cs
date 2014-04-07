@@ -12,7 +12,7 @@ namespace GameOfLifeReductionism.IntegrationTest
     {
         private GameOfLife Create(string[] init)
         {
-            var game = new GameOfLife(init, new NeighboursCount(), new CellStateSolver());
+            var game = new GameOfLife(init, new NeighboursCount(), new CellStateSolver(), new PanelConverter());
             return game;
         }
 
