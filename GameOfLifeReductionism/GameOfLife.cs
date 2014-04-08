@@ -40,7 +40,7 @@ namespace GameOfLifeReductionism
                 for (int col = 0; col < 4; col++)
                 {
                     var neighbours = neighboursCount.GetCount(list, row, col);
-                    temp += cellStateSolver.GetNextState(neighbours);
+                    temp += cellStateSolver.GetNextState(panel[row].ElementAt(col), neighbours);                    
                 }
                 result.Add(temp);
             }

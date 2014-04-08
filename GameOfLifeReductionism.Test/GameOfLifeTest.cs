@@ -60,7 +60,7 @@ namespace GameOfLifeReductionism.Test
             
             game.Next();
 
-            A.CallTo(() => cellStateSolver.GetNextState(125))
+            A.CallTo(() => cellStateSolver.GetNextState(A<char>.Ignored, 125))
                 .MustHaveHappened(Repeated.Exactly.Times(16));
 
         }
@@ -68,7 +68,7 @@ namespace GameOfLifeReductionism.Test
         [TestCase]
         public void AllNewStatesAreUsedInTheFinalState()
         {
-            A.CallTo(() => cellStateSolver.GetNextState(A<int>.Ignored)).ReturnsNextFromSequence(
+            A.CallTo(() => cellStateSolver.GetNextState(A<char>.Ignored, A<int>.Ignored)).ReturnsNextFromSequence(
                 new []{'1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G'});
             var game = Create();            
 

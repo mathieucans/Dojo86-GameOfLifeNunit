@@ -3,33 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using GameOfLifeReductionism;
 
 namespace GameOfLifeReductionism.IntegrationTest
 {
     [TestFixture]
-    public class US2
+    public class US3_AnyLiveCellWithTwoOrThreeNeighboursLives
     {
-        private GameOfLife Create(string[] init)
-        {
-            var game = new GameOfLife(init, new NeighboursCount(), new CellStateSolver(), new PanelConverter());
-            return game;
-        }
-
         [TestCase]
         public void Exemple1()
         {
             var init = new string[] {
-                "X-X-",
                 "-X--",
-                "X-X-",
+                "-XX-",
+                "----",
                 "----",
             };
-            var game = Create(init);
+            var game = GameOfLifeFactory.Create(init);
 
             var expected = new string[] {
-                "----",
-                "----",
+                "-X--",
+                "-XX-",
                 "----",
                 "----",
             };

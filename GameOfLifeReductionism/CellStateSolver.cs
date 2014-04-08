@@ -7,9 +7,16 @@ namespace GameOfLifeReductionism
 {
     public class CellStateSolver : ICellStateSolver
     {
-        public char GetNextState(int p)
+        public char GetNextState(char originalSate, int neighboursCount)
         {
-            return (p < 2) ? '-' : 'X';
+            if (originalSate == 'X')
+            {
+                return (neighboursCount < 2 || neighboursCount > 3) ? '-' : 'X';
+            }
+            else
+            {
+                return '-';
+            }
         }
     }
 }

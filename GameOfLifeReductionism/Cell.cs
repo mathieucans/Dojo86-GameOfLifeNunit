@@ -16,5 +16,22 @@ namespace GameOfLifeReductionism
             this.X = x;
             this.Y = y;
         }
+
+        public override bool Equals(object obj)
+        {
+            var result = false;
+            if (obj is Cell)
+            {
+                var cell = (Cell)obj;
+                result = this.X == cell.X && this.Y == cell.Y;
+            }
+            return result;
+         
+        }
+
+        public override int GetHashCode()
+        {
+            return X ^ Y;
+        }
     }
 }

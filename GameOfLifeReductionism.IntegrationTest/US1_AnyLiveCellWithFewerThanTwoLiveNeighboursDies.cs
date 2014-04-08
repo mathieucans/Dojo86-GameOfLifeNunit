@@ -8,14 +8,8 @@ using GameOfLifeReductionism;
 namespace GameOfLifeReductionism.IntegrationTest
 {
     [TestFixture]
-    class US1_AnyLiveCellWithFewerThanTwoLiveNeighboursDies
-    {
-        private GameOfLife Create(string[] init)
-        {
-            var game = new GameOfLife(init, new NeighboursCount(), new CellStateSolver(), new PanelConverter());
-            return game;
-        }
-
+    public class US1_AnyLiveCellWithFewerThanTwoLiveNeighboursDies
+    {        
         [TestCase]
         public void Exemple1()
         {
@@ -25,7 +19,7 @@ namespace GameOfLifeReductionism.IntegrationTest
                 "----",
                 "----",
             };
-            var game = Create(init);
+            var game = GameOfLifeFactory.Create(init);
 
             var expected = new string[] {
                 "----",
@@ -45,7 +39,7 @@ namespace GameOfLifeReductionism.IntegrationTest
                 "--X-",
                 "----",
             };
-            var game = Create(init);
+            var game = GameOfLifeFactory.Create(init);
 
             var expected = new string[] {
                 "----",
